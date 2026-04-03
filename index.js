@@ -1,21 +1,24 @@
 /*1.Create a variable called "getComputerChoice" 
-This function has to randomly pick 1 of 3 choices
-Every 1 of these numbers has to concorde with the 
-three choices
-2.Make a variable called "getHumanChoice"
-This variable stores the choice of te user
-3.Create two variables "humanScore" and "computerScore"
-This two should store the score each side gets every round
+This function has to randomly pick 1 of 3 choices.Every 1 of these numbers has to concorde with the three choices Rock,Paper and Scissors
+2.Make a variable called "getHumanChoice",this variable stores the choice of te user
+3.Create two variables "humanScore" and "computerScore".This two should store the score each side gets every round
+4.Create a function with 2 parameters called "humanChoice" and another one called "computerChoice"
+5.For "humanChoice" the input should be case insensitive
+6.Take these 2 choices and compare them in such way that if any of the users pick Rock and the other picks Paper the one that choices
+Paper wins,if one choices Rock and the other one Scissors than Rock should win ,if one choices Paper and the other Scissors than Paper 
+wins,and if they are the same than its a tie 
+7.Print a meesage uasing console.log that if the usdeprint a meesage uasing console.log that if the usde
+8.After these booleans are cheked the winner should get their score incremented 
 */
-let getComputerChoice= Math.floor(Math.random()*3)+1;
-    if (getComputerChoice === 1){
-        console.log ("Rock");
-    }else if (getComputerChoice ===2){
-        console.log("Paper") ;
-    } else {
-        console.log ("Scissors");
-    }
+let handChoices=["rock","paper","scissors"]
+let getComputerChoice= Math.floor(Math.random()* handChoices.length);
 let getHumnaChoice=prompt("What is your choice?")
-let humanScore ="";
-let computerScore="";
+let humanScore = 0;
+let computerScore 0;
+
+function playRound(humanChoice,computerChoice){
+    let humanChoice= String.toLowerCase(getHumnaChoice);
+    
+
+}
 
