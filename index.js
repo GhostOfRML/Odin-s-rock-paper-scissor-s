@@ -8,17 +8,15 @@ This function has to randomly pick 1 of 3 choices.Every 1 of these numbers has t
 Paper wins,if one choices Rock and the other one Scissors than Rock should win ,if one choices Paper and the other Scissors than Paper 
 wins,and if they are the same than its a tie 
 7.Print a meesage uasing console.log that if the usdeprint a meesage uasing console.log that if the usde
-8.After these booleans are cheked the winner should get their score incremented 
+8.After these choices are cheked the winner should get their score incremented 
+9.Add from 5-8 should be added inside another function called "playGame" and it should repeat 5 times
 */
-let handChoices=["rock","paper","scissors"];
-let getComputerChoice= handChoices[Math.floor(Math.random()* handChoices.length)];
-console.log(getComputerChoice);
-let getHumnaChoice=prompt("What is your choice?").toLowerCase();
+
 let humanScore = 0;
 let computerScore= 0;
-
-function playRound(humanChoice,computerChoice){
-    
+let handChoices=["rock","paper","scissors"];
+let totalScore= humanScore +"~"+ computerScore;
+function playRound(humanChoice,computerChoice){  
         if (humanChoice==="rock" && computerChoice==="paper"){
             return console.log("You lose!Paper beats rock!"),computerScore++;
         }else if(humanChoice==="paper"&&computerChoice==="scissors"){
@@ -32,11 +30,21 @@ function playRound(humanChoice,computerChoice){
         }else if(humanChoice==="rock"&&computerChoice==="scissors"){
             return console.log("You win!Rock beats scissors !"),humanScore++;
         }else {console.log("It'a me a tie!");}
-        
-}
-const humanChoice= getHumnaChoice;
-const computerChoice= getComputerChoice;
-
-playRound (humanChoice,computerChoice);
-
+    }
+function playGame(n){
+    
+    for(let i=0;i<=n;i++){
+        let getComputerChoice= handChoices[Math.floor(Math.random()* handChoices.length)];
+        console.log(getComputerChoice);
+        let getHumnaChoice=prompt("What is your choice?").toLowerCase();
+    const humanChoice= getHumnaChoice;
+    const computerChoice= getComputerChoice; 
+    playRound(humanChoice,computerChoice);
+        console.log(totalScore)
+        }
+    }
+   
+    
+    playGame(5)
+    
 
