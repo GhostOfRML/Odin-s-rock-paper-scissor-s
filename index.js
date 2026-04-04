@@ -10,15 +10,33 @@ wins,and if they are the same than its a tie
 7.Print a meesage uasing console.log that if the usdeprint a meesage uasing console.log that if the usde
 8.After these booleans are cheked the winner should get their score incremented 
 */
-let handChoices=["rock","paper","scissors"]
-let getComputerChoice= Math.floor(Math.random()* handChoices.length);
-let getHumnaChoice=prompt("What is your choice?")
+let handChoices=["rock","paper","scissors"];
+let getComputerChoice= handChoices[Math.floor(Math.random()* handChoices.length)];
+console.log(getComputerChoice);
+let getHumnaChoice=prompt("What is your choice?").toLowerCase();
 let humanScore = 0;
-let computerScore 0;
+let computerScore= 0;
 
 function playRound(humanChoice,computerChoice){
-    let humanChoice= String.toLowerCase(getHumnaChoice);
     
-
+        if (humanChoice==="rock" && computerChoice==="paper"){
+            return console.log("You lose!Paper beats rock!"),computerScore++;
+        }else if(humanChoice==="paper"&&computerChoice==="scissors"){
+            return console.log("You lose!Scissors beats paper!"),computerScore++;
+        }else if(humanChoice==="scissors"&&computerChoice==="rock"){
+            return console.log("You lose!Rock beats scissors!"),computerScore++;
+        }else if(humanChoice==="paper"&&computerChoice==="rock"){
+            return console.log("You win!Paper beats rock!"),humanScore++;
+        }else if(humanChoice==="scissors"&&computerChoice==="paper"){
+            return console.log("You win!Scissors beats paper !"),humanScore++;
+        }else if(humanChoice==="rock"&&computerChoice==="scissors"){
+            return console.log("You win!Rock beats scissors !"),humanScore++;
+        }else {console.log("It'a me a tie!");}
+        
 }
+const humanChoice= getHumnaChoice;
+const computerChoice= getComputerChoice;
+
+playRound (humanChoice,computerChoice);
+
 
