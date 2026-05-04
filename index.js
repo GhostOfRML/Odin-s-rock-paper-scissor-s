@@ -29,28 +29,48 @@ function playRound(humanChoice,computerChoice){
             console.log("You win!Scissors beats paper !"),humanScore++;
         }else if(humanChoice==="rock"&&computerChoice==="scissors"){
             console.log("You win!Rock beats scissors !"),humanScore++;
-        }else {console.log("It'a me a tie!");}
-    }
-function playGame(n){
-    
-    for(let i=0;i<=n;i++){
-        let getComputerChoice= handChoices[Math.floor(Math.random()* handChoices.length)];
-        console.log(getComputerChoice);
-        let getHumnaChoice=prompt("What is your choice?").toLowerCase();
-    const humanChoice= getHumnaChoice;
-    const computerChoice= getComputerChoice; 
-    playRound(humanChoice,computerChoice);
+        }else {
+            console.log("It's a me a tie")
         }
-    if (humanScore>computerScore){
-        console.log("You win the game!The score is "+humanScore+"~"+computerScore+"!");
-    }else if(humanScore<computerScore) {
-        console.log("You lose the game!The score is "+humanScore+"~"+computerScore+"!");
-    }else {
-        console.log("It'a me a tie,again!The score is "+humanScore+"~"+computerScore+"!");
-    }
-}
+    }  
+    function getComputerChoice(){
+    let computerChoice= handChoices[Math.floor(Math.random()* handChoices.length)];
+    console.log("Computer choice is " + computerChoice);
+    return computerChoice;
+    
+    };
+    
+    const container = document.querySelector("#container");
+    const scoreBoard = document.querySelector("#scoreBoard")
+    const versus = document.createElement("h1")
+    versus.textContent("You chose")
+    container.addEventListener("click" , (event) =>{
+        let target = event.target;
+
+        switch(target.id){
+            case "scissors":
+                scoreBoard.removeChild("versus")
+                console.log("scissors")
+                playRound("scissors",getComputerChoice())
+            break;
+        
+            case "paper":
+                console.log("paper")
+                 playRound("paper",getComputerChoice())
+            break;
+
+            case "rock":
+                console.log("rock")
+                 playRound("rock",getComputerChoice())
+            break;
+
+        }
+    })
+
+
+
    
     
-    playGame(4)
+  
     
 
