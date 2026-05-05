@@ -12,6 +12,8 @@ wins,and if they are the same than its a tie
 9.Add from 5-8 should be added inside another function called "playGame" and it should repeat 5 times
 */
 
+
+
 let humanScore = 0;
 let computerScore= 0;
 let handChoices=["rock","paper","scissors"];
@@ -19,16 +21,22 @@ let handChoices=["rock","paper","scissors"];
 function playRound(humanChoice,computerChoice){  
         if (humanChoice==="rock" && computerChoice==="paper"){
             console.log("You lose!Paper beats rock!"),computerScore++;
+            pointTracker.textContent = humanScore + " : " + computerScore ;
         }else if(humanChoice==="paper"&&computerChoice==="scissors"){
             console.log("You lose!Scissors beats paper!"),computerScore++;
+            pointTracker.textContent = humanScore + " : " + computerScore ;
         }else if(humanChoice==="scissors"&&computerChoice==="rock"){
             console.log("You lose!Rock beats scissors!"),computerScore++;
+            pointTracker.textContent = humanScore + " : " + computerScore ;
         }else if(humanChoice==="paper"&&computerChoice==="rock"){
             console.log("You win!Paper beats rock!"),humanScore++;
+            pointTracker.textContent = humanScore + " : " + computerScore ;
         }else if(humanChoice==="scissors"&&computerChoice==="paper"){
             console.log("You win!Scissors beats paper !"),humanScore++;
+            pointTracker.textContent = humanScore + " : " + computerScore ;
         }else if(humanChoice==="rock"&&computerChoice==="scissors"){
             console.log("You win!Rock beats scissors !"),humanScore++;
+            pointTracker.textContent = humanScore + " : " + computerScore ;
         }else {
             console.log("It's a me a tie")
         }
@@ -36,32 +44,50 @@ function playRound(humanChoice,computerChoice){
     function getComputerChoice(){
     let computerChoice= handChoices[Math.floor(Math.random()* handChoices.length)];
     console.log("Computer choice is " + computerChoice);
+    computerChoiceTxt.textContent= "Computer has chosen " + computerChoice;
+   
     return computerChoice;
     
     };
     
     const container = document.querySelector("#container");
-    const scoreBoard = document.querySelector("#scoreBoard")
-    const versus = document.createElement("h1")
-    versus.textContent("You chose")
+    const scoreBoard = document.querySelector("#scoreBoard");
+
+    const versus = document.createElement("h1");
+    versus.textContent = "VS";
+
+    const humanChoiceTxt =document.createElement("h3");
+    scoreBoard.appendChild(humanChoiceTxt);
+    scoreBoard.appendChild(versus);
+
+    const computerChoiceTxt = document.createElement("h3");
+    scoreBoard.appendChild(computerChoiceTxt)
+
+    const pointTracker = document.createElement("h2");
+    pointTracker.textContent = humanScore + " : " + computerScore ;
+    scoreBoard.appendChild(pointTracker);
+
     container.addEventListener("click" , (event) =>{
         let target = event.target;
 
         switch(target.id){
             case "scissors":
-                scoreBoard.removeChild("versus")
-                console.log("scissors")
-                playRound("scissors",getComputerChoice())
+                
+                console.log("scissors");
+                humanChoiceTxt.textContent = "You have chosen scissors";
+               playRound("scissors",getComputerChoice());
             break;
         
             case "paper":
                 console.log("paper")
+                humanChoiceTxt.textContent = "You have chosen paper";
                  playRound("paper",getComputerChoice())
             break;
 
             case "rock":
                 console.log("rock")
-                 playRound("rock",getComputerChoice())
+                humanChoiceTxt.textContent = "You have chosen rock";
+                playRound("rock",getComputerChoice())
             break;
 
         }
