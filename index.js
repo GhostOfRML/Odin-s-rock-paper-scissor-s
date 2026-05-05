@@ -20,25 +20,25 @@ let handChoices=["rock","paper","scissors"];
 
 function playRound(humanChoice,computerChoice){  
         if (humanChoice==="rock" && computerChoice==="paper"){
-            console.log("You lose!Paper beats rock!"),computerScore++;
+            announcement.textContent="You lose!Paper beats rock!",computerScore++;
             pointTracker.textContent = humanScore + " : " + computerScore ;
         }else if(humanChoice==="paper"&&computerChoice==="scissors"){
-            console.log("You lose!Scissors beats paper!"),computerScore++;
+            announcement.textContent="You lose!Scissors beats paper!",computerScore++;
             pointTracker.textContent = humanScore + " : " + computerScore ;
         }else if(humanChoice==="scissors"&&computerChoice==="rock"){
-            console.log("You lose!Rock beats scissors!"),computerScore++;
+            announcement.textContent="You lose!Rock beats scissors!",computerScore++;
             pointTracker.textContent = humanScore + " : " + computerScore ;
         }else if(humanChoice==="paper"&&computerChoice==="rock"){
-            console.log("You win!Paper beats rock!"),humanScore++;
+            announcement.textContent="You win!Paper beats rock!",humanScore++;
             pointTracker.textContent = humanScore + " : " + computerScore ;
         }else if(humanChoice==="scissors"&&computerChoice==="paper"){
-            console.log("You win!Scissors beats paper !"),humanScore++;
+            announcement.textContent="You win!Scissors beats paper !",humanScore++;
             pointTracker.textContent = humanScore + " : " + computerScore ;
         }else if(humanChoice==="rock"&&computerChoice==="scissors"){
-            console.log("You win!Rock beats scissors !"),humanScore++;
+            announcement.textContent="You win!Rock beats scissors !",humanScore++;
             pointTracker.textContent = humanScore + " : " + computerScore ;
         }else {
-            console.log("It's a me a tie")
+            announcement.textContent="It's a me a tie"
         }
     }  
     function getComputerChoice(){
@@ -57,41 +57,64 @@ function playRound(humanChoice,computerChoice){
     versus.textContent = "VS";
 
     const humanChoiceTxt =document.createElement("h3");
+    humanChoiceTxt.textContent = "You have chosen ____";
     scoreBoard.appendChild(humanChoiceTxt);
     scoreBoard.appendChild(versus);
 
     const computerChoiceTxt = document.createElement("h3");
+    computerChoiceTxt.textContent= "Computer has chosen ____";
     scoreBoard.appendChild(computerChoiceTxt)
 
     const pointTracker = document.createElement("h2");
     pointTracker.textContent = humanScore + " : " + computerScore ;
     scoreBoard.appendChild(pointTracker);
 
+    const announcement=document.createElement("h2");
+    scoreBoard.appendChild(announcement);
+
+    const winner=document.createElement("h1");
+    scoreBoard.appendChild(winner);
+
     container.addEventListener("click" , (event) =>{
         let target = event.target;
 
         switch(target.id){
             case "scissors":
-                
                 console.log("scissors");
                 humanChoiceTxt.textContent = "You have chosen scissors";
                playRound("scissors",getComputerChoice());
             break;
         
             case "paper":
-                console.log("paper")
+                console.log("paper");
                 humanChoiceTxt.textContent = "You have chosen paper";
-                 playRound("paper",getComputerChoice())
+                 playRound("paper",getComputerChoice());
             break;
 
             case "rock":
-                console.log("rock")
+                console.log("rock");
                 humanChoiceTxt.textContent = "You have chosen rock";
-                playRound("rock",getComputerChoice())
+                playRound("rock",getComputerChoice());
             break;
 
         }
+        if (humanScore === 5) {
+            humanChoiceTxt.textContent = "You have chosen ____";
+            humanScore = 0;
+            computerScore = 0;
+            pointTracker.textContent = humanScore + " : " + computerScore ;
+            computerChoiceTxt.textContent= "Computer has chosen ____";
+            winner.textContent= "You got to 5 points !You win!";
+        } else if (computerScore === 5) {
+            humanChoiceTxt.textContent = "You have chosen ____";
+            humanScore = 0;
+            computerScore = 0;
+            pointTracker.textContent = humanScore + " : " + computerScore ;
+            computerChoiceTxt.textContent= "Computer has chosen ____";
+            winner.textContent= "Computer got to 5 points !You lose!";
+        }
     })
+
 
 
 
